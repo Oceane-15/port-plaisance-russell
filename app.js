@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const catwayRoute = require('./routes/catway');
 require('dotenv').config();
 
 const app = express();
@@ -10,6 +11,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use('/api/catways', catwayRoute);
 
 app.set('view engine' , 'ejs');
 
