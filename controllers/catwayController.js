@@ -18,3 +18,15 @@ exports.getAll = async(req, res) => {
         res.status(500).json({message: error.message});
     }
 };
+
+exports.getById = async (req, res) => {
+    try {
+        const catway = await Catway.findById(req.params.id);
+        if (!catway) {
+            return res.status(404).json({message: "Catway non trouvé"});
+        }
+        return res.status(200).json(catway);
+    } catch (error) {
+        return res.status(500).json({message: error.message});
+    }
+};
