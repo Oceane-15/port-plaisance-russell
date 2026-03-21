@@ -30,3 +30,25 @@ exports.getById = async (req, res) => {
         return res.status(500).json({message: error.message});
     }
 };
+
+exports.update = async (req, res) => {
+    try{
+        const catway = await Catway.findByIdAndUpdate
+        (req.params.id,
+            {catwayState: req.body.catwayState},
+            {new: true}
+        );
+        res.status(200).json(catway);
+    } catch (error){
+        res.status(500).json({message: error.message});
+    }
+};
+
+exports.delete = async (req, res) => {
+    try{
+        await Catway.findByIdAndDelete(req.params.id);
+        res.status(200).json({message: "Catway supprimé"});
+    } catch (error){
+        res.status(500).json({message: error.message});
+    }
+};
