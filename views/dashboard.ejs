@@ -10,6 +10,25 @@
     <div class="card">
         <h1>Bienvenue sur notre interface</h1>
         <p>Notre API est désormais opérationnel !</p> <hr>
+        <h3>Liste des Catways</h3>
+        <table border="1" style="width:100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+                <tr>
+                    <th>Numéro</th>
+                    <th>Type</th>
+                    <th>État</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% catways.forEach(catway => { %>
+                    <tr>
+                        <td><%= catway.catwayNumber %></td>
+                        <td><%= catway.catwayType %></td>
+                        <td><%= catway.catwayState %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
         <ul>
             <li><a href="/api/catways">Voir les Catways</a></li>
         </ul>

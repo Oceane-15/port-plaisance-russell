@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI)
 .catch((err) => console.error('Erreur de connexion :', err));
 
 app.use('/api/catways', catwayRoute);
-app.use('/api/catways', reservationRoute);
+app.use('/api/reservations', reservationRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Serveur lancé sur le port ${PORT}`));
