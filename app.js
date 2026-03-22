@@ -3,13 +3,14 @@ const mongoose = require('mongoose');
 const path = require('path');
 require('dotenv').config();
 
-const catwayRoute = require('./routes/catway');
-const reservationRoute = require('./routes/reservation');
-
 const app = express();
 
 app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
+
+const catwayRoute = require('./routes/catway');
+const reservationRoute = require('./routes/reservation');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
