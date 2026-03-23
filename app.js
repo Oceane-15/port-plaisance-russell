@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const methodOverride = require('method-override');
 require('dotenv').config();
 
 const app = express();
@@ -14,6 +15,7 @@ const reservationRoute = require('./routes/reservation');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(() => console.log('Connexion à MongoDB réussie'))

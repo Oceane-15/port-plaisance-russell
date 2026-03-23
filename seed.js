@@ -1,0 +1,22 @@
+const mongoose = require('mongoose');
+const Catway = require('./models/Catway');
+const fs = require('fs');
+require('dotenv').config();
+
+async function seedDatabase() {
+    try{
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log("Connecté à MongoDB pour l'import");
+        const data = JSON.parse(fs.readFileSync('./catways.json', 'utf-8'));
+        await Catway.deleteMany({});
+        console.log("Anciennes données supprimées.");
+        await Catway.insertMany(data);
+        console.log("Succès : les 24 catways ont été bien importés.");
+        process.exit();
+    } catch (error){
+        console.error("Erreur d'import :", error);
+        process.exit(1);
+    }
+}
+
+seedDatabase();

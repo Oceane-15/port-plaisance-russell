@@ -10,6 +10,22 @@
     <div class="card">
         <h1>Bienvenue sur notre interface</h1>
         <p>Notre API est désormais opérationnel !</p> <hr>
+        <h2>Gestion des Catways</h2>
+        <div class="form">
+            <h3>Ajouter un nouveau Catway</h3>
+
+            <form action="/api/catways" method="post">
+                <input type="number" name="catwayNumber" placeholder="N° Catway" min="0" required>
+                <select name="catwayType">
+                <option value="long">Long</option>
+                <option value="short">Short</option>
+                </select>
+
+                <input type="text" name="catwayState" placeholder="Etat" required>
+                <button type="submit" class="btn-add">Enregistrer</button>
+            </form>
+        </div>
+
         <h3>Liste des Catways</h3>
         <table border="1" style="width:100%; border-collapse: collapse; margin-top: 20px;">
             <thead>
@@ -17,6 +33,7 @@
                     <th>Numéro</th>
                     <th>Type</th>
                     <th>État</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,13 +42,18 @@
                         <td><%= catway.catwayNumber %></td>
                         <td><%= catway.catwayType %></td>
                         <td><%= catway.catwayState %></td>
+                        <td>
+                            <div class="actions">
+                               <a href="/api/catways/<%= catway._id %>" class="btn-details">Détails</a>
+                               <form action="/api/catways/<%= catway._id %>?_method=DELETE" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce catway ?')">
+                                <button type="submit" class="btn-delete">Supprimer</button>
+                               </form>
+                            </div>
+                        </td>
                     </tr>
                 <% }); %>
             </tbody>
         </table>
-        <ul>
-            <li><a href="/api/catways">Voir les Catways</a></li>
-        </ul>
     </div>
 </body>
 </html>
