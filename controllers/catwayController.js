@@ -1,4 +1,12 @@
-const Catway = require ('../models/Catway');
+const Catway = require ('../models/catway');
+
+exports.getAllForDashboard = async () => {
+    try {
+        return await Catway.find(); 
+    } catch (error) {
+        throw error;
+    }
+};
 
 exports.create = async (req, res) => {
     try{
