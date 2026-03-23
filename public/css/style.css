@@ -9,7 +9,7 @@ body{
 
 h1{
     color: #2c3e50;
-    border-bottom: 3px solid blue;
+    border-bottom: 3px solid black;
     padding-bottom: 10px;
 }
 
@@ -28,7 +28,7 @@ p{
 }
 
 hr{
-    border-bottom: 2px solid blue;
+    border-bottom: 2px solid black;
 }
 
 .form{
