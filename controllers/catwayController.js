@@ -45,9 +45,9 @@ exports.update = async (req, res) => {
         const catway = await Catway.findByIdAndUpdate
         (req.params.id,
             {catwayState: req.body.catwayState},
-            {new: true}
+            {returnDocument: 'after'}
         );
-        res.status(200).json(catway);
+        res.redirect('/api/catways/dashboard');
     } catch (error){
         res.status(500).json({message: error.message});
     }

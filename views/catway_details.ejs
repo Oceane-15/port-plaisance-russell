@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css"> 
+    <title>Détails Catway <%= catway.catwayNumber %></title>
+</head>
+<body>
+    <div class="card"> <h1>Détails du Catway n° <%= catway.catwayNumber %></h1>
+        <hr>
+        <p>Type : <%= catway.catwayType %></p>
+        
+        <form action="/api/catways/<%= catway._id %>?_method=PUT" method="POST" class="form">
+            <label for="catwayState">État actuel :</label>
+            <input type="text" name="catwayState" value="<%= catway.catwayState %>" required>
+            <button type="submit" class="btn-add">Mettre à jour l'état</button>
+        </form>
+
+        <br>
+        <a href="/api/catways/dashboard" class="btn-back">Retour au tableau de bord</a>
+    </div>
+</body>
+</html>
