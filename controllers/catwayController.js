@@ -12,7 +12,7 @@ exports.create = async (req, res) => {
     try{
         const catway = new Catway(req.body);
         await catway.save();
-        res.status(201).json(catway);
+        res.redirect('/api/catways/dashboard');
     } catch (error){
         res.status(400).json({message: error.message});
     }
@@ -30,10 +30,11 @@ exports.getAll = async(req, res) => {
 exports.getById = async (req, res) => {
     try {
         const catway = await Catway.findById(req.params.id);
-        if (!catway) {
-            return res.status(404).json({message: "Catway non trouvé"});
+        if (catway) {
+            res.render('catway_details', { catway });
+        } else {
+            res.status(404).send('Catway non trouvé');
         }
-        return res.status(200).json(catway);
     } catch (error) {
         return res.status(500).json({message: error.message});
     }
@@ -55,7 +56,7 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
     try{
         await Catway.findByIdAndDelete(req.params.id);
-        res.status(200).json({message: "Catway supprimé"});
+        res.redirect('/api/catways/dashboard');
     } catch (error){
         res.status(500).json({message: error.message});
     }

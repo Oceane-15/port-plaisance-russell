@@ -42,7 +42,14 @@
                         <td><%= catway.catwayNumber %></td>
                         <td><%= catway.catwayType %></td>
                         <td><%= catway.catwayState %></td>
-                        <td><a href="/api/catways/<%= catway._id %>" class="btn-details">Détails</a></td>
+                        <td>
+                            <div class="actions">
+                               <a href="/api/catways/<%= catway._id %>" class="btn-details">Détails</a>
+                               <form action="/api/catways/<%= catway._id %>?_method=DELETE" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce catway ?')">
+                                <button type="submit" class="btn-delete">Supprimer</button>
+                               </form>
+                            </div>
+                        </td>
                     </tr>
                 <% }); %>
             </tbody>
