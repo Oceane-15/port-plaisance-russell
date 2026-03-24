@@ -1,4 +1,4 @@
-const Catway = require('../models/catway');
+const Catway = require('../models/Catway');
 const Reservation = require('../models/Reservation');
 
 exports.create = async (req, res) => {
