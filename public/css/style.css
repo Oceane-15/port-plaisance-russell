@@ -13,6 +13,14 @@ h1{
     padding-bottom: 10px;
 }
 
+h2, h3 {
+    color: black;
+    margin-top: 30px;
+    border-bottom: 2px solid #333b3c;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
 .card{
     background: white;
     padding: 30px;
@@ -65,7 +73,7 @@ form input, form select{
 table{
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 th{
@@ -152,3 +160,17 @@ a:hover{
     text-decoration: none;
 }
 
+.btn-delete-res {
+    background-color: #e94d4b;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn-delete-res:hover {
+    background-color: rgb(236, 122, 120);
+}

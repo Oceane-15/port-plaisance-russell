@@ -16,6 +16,55 @@
             <button type="submit" class="btn-add">Mettre à jour l'état</button>
         </form>
 
+        <hr>
+
+        <h2>Réservations pour ce catway</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bateau</th>
+                    <th>Clients</th>
+                    <th>Du</th>
+                    <th>Au</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (reservations && reservations.length > 0) { %>
+                    <% reservations.forEach(res => { %>
+                        <tr>
+                            <td><%= res.boatName %></td>
+                            <td><%= res.clientName %></td>
+                            <td><%= new Date(res.startDate).toLocaleDateString() %></td>
+                            <td><%= new Date(res.endDate).toLocaleDateString() %></td>
+                            <td>
+                                <form action="/api/catways/<%= catway._id %>/reservations/<%= res._id %>?_method=DELETE" method="post">
+                                    <button type="submit" class="btn-delete-res" onclick="return confirm('Annuler ?')">Annuler ?</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="5">Aucune réservation en cours.</td>
+                            </tr>
+                        <% } %>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h3>Nouvelle Réservations</h3>
+        <form action="/api/catways/<%= catway._id %>/reservations" method="POST" class="form">
+            <input type="text" name="clientName" placeholder="Nom du client" required>
+            <input type="text" name="boatName" placeholder="Nom du bateau" required>
+            <label>Date de début :</label>
+            <input type="date" name="startDate" required>
+            <label>Date de fin :</label>
+            <input type="date" name="endDate" required>
+            <button type="submit" class="btn-add">Réserver</button>
+        </form>
+
         <br>
         <a href="/api/catways/dashboard" class="btn-back">Retour au tableau de bord</a>
     </div>
