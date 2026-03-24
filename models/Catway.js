@@ -7,4 +7,4 @@ const catwaySchema = new Schema({
     catwayState: {type: String, required: true}
 });
 
-module.exports = mongoose.model('Catway', catwaySchema);
+module.exports = mongoose.models.Catway || mongoose.model('Catway', catwaySchema);

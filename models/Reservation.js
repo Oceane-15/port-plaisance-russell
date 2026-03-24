@@ -9,4 +9,4 @@ const reservationSchema = new Schema({
     endDate: {type: Date, required: true}
 });
 
-module.exports = mongoose.model('Reservation', reservationSchema);
+module.exports = mongoose.models.Reservation || mongoose.model('Reservation', reservationSchema);
