@@ -1,9 +1,11 @@
+const Catway = require('../models/catway');
 const Reservation = require('../models/Reservation');
 
 exports.create = async (req, res) => {
     try{
+        const catway = await Catway.findById(req.params.id); 
         const reservation = new Reservation({
-            catwayNumber: req.params.id,
+            catwayNumber: catway.catwayNumber, 
             clientName: req.body.clientName,
             boatName: req.body.boatName,
             startDate: req.body.startDate,

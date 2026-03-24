@@ -8,7 +8,7 @@
 <body>
     <div class="card"> <h1>Détails du Catway n° <%= catway.catwayNumber %></h1>
         <hr>
-        <p>Type : <%= catway.catwayType %></p>
+        <p><strong>Type : <%= catway.catwayType %></strong></p>
         
         <form action="/api/catways/<%= catway._id %>?_method=PUT" method="POST" class="form">
             <label for="catwayState">État actuel :</label>
@@ -18,7 +18,7 @@
 
         <hr>
 
-        <h2>Réservations pour ce catway</h2>
+        <h2>Réservation pour ce catway</h2>
         <table>
             <thead>
                 <tr>
