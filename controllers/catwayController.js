@@ -1,4 +1,4 @@
-const Catway = require ('../models/Catway');
+const Catway = require('../models/Catway');
 const Reservation = require('../models/Reservation');
 
 exports.getAllForDashboard = async () => {

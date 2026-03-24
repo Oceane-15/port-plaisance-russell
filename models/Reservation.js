@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const reservationSchema = new Schema({
-    catwayNumber: {type: String, required: true},
+    catwayNumber: {type: Number, required: true},
     clientName: {type: String, required: true},
     boatName: {type: String, required: true},
     startDate: {type: Date, required: true},
     endDate: {type: Date, required: true}
 });
 
-module.exports = mongoose.model('Reservation', reservationSchema);
+module.exports = mongoose.models.Reservation || mongoose.model('Reservation', reservationSchema);
