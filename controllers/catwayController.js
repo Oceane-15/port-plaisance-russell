@@ -1,4 +1,5 @@
-const Catway = require ('../models/catway');
+const Catway = require ('../models/Catway');
+const Reservation = require('../models/Reservation');
 
 exports.getAllForDashboard = async () => {
     try {
@@ -31,7 +32,8 @@ exports.getById = async (req, res) => {
     try {
         const catway = await Catway.findById(req.params.id);
         if (catway) {
-            res.render('catway_details', { catway });
+            const reservations = await Reservation.find({catwayNumber: catway.catwayNumber});
+            res.render('catway_details', { catway, reservations});
         } else {
             res.status(404).send('Catway non trouvé');
         }

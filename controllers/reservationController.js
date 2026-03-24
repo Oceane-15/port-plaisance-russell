@@ -10,18 +10,18 @@ exports.create = async (req, res) => {
             endDate: req.body.endDate
         });
         await reservation.save();
-        res.status(201).json(reservation);
+        res.redirect(`/api/catways/${req.params.id}`);
     } catch (error){
-        res.status(400).json({message: error.message});
+        res.status(400).send("Erreur : " + error.message);
     }
 };
 
 exports.delete = async (req, res) => {
     try{
         await Reservation.findByIdAndDelete(req.params.idReservation);
-        res.status(200).json({message: "Réservation supprimée"});
+        res.redirect(`/api/catways/${req.params.id}`);
     } catch (error){
-        res.status(500).json({message: error.message});
+        res.status(500).send("Erreur : " + error.message);
     }
 };
 
