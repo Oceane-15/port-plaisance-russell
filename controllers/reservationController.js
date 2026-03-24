@@ -33,3 +33,13 @@ exports.getByCatway = async (req, res) => {
         res.status(500).json({message: error.message});
     }
 };
+
+exports.getById = async (req, res) => {
+    try {
+        const catway = await Catway.findById(req.params.id);
+        const reservations = await Reservation.find({catwayNumber: req.params.id});
+        res.render('catway_details', {catway, reservations});
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+};
