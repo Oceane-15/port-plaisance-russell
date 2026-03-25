@@ -174,3 +174,10 @@ a:hover{
 .btn-delete-res:hover {
     background-color: rgb(236, 122, 120);
 }
+
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    gap: 10px;
+}
