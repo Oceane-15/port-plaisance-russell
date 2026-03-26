@@ -9,7 +9,13 @@
 <body>
     <div class="card">
         <h1>Bienvenue sur notre interface</h1>
-        <p>Notre API est désormais opérationnel !</p> <hr>
+        <p>Notre API est désormais opérationnel !</p>
+        <a href="https://github.com/Oceane-15/port-plaisance-russell/" target="_blank">Documentation API</a><hr>
+        <div class="user-info">
+    <p>Connecté en tant que : <strong><%= user.username %></strong> (<%= user.email %>)</p>
+    <p>Date : <%= date %></p>
+    <a href="/logout" class="btn-delete">Se déconnecter</a>
+    </div>
         <h2>Gestion des Catways</h2>
         <div class="form">
             <h3>Ajouter un nouveau Catway</h3>

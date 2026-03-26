@@ -33,15 +33,27 @@
                 <% if (reservations && reservations.length > 0) { %>
                     <% reservations.forEach(res => { %>
                         <tr>
-                            <td><%= res.boatName %></td>
-                            <td><%= res.clientName %></td>
-                            <td><%= new Date(res.startDate).toLocaleDateString() %></td>
-                            <td><%= new Date(res.endDate).toLocaleDateString() %></td>
-                            <td>
-                                <form action="/api/catways/<%= catway._id %>/reservations/<%= res._id %>?_method=DELETE" method="post">
-                                    <button type="submit" class="btn-delete-res" onclick="return confirm('Annuler ?')">Annuler </button>
-                                </form>
-                            </td>
+                          <form action="/api/catways/<%= catway._id %>/reservations/<%= res._id %>?_method=PUT" method="POST">
+                                <td>
+                                    <input class="input-table" type="text" name="boatName" value="<%= res.boatName %>" required> 
+                                </td>
+                                <td>
+                                    <input class="input-table" type="text" name="clientName" value="<%= res.clientName %>" required> 
+                                </td>
+                                <td>
+                                    <input class="input-table" type="date" name="startDate" value="<%= new Date(res.startDate).toISOString().split('T')[0] %>" required> 
+                                </td>
+                                <td>
+                                    <input class="input-table" type="date" name="endDate" value="<%= new Date(res.endDate).toISOString().split('T')[0] %>" required>
+                                </td>
+                                <td class="save">
+                                    <button type="submit" class="btn-add">Sauvegarder</button>
+                            </form>
+
+                                    <form action="/api/catways/<%= catway._id %>/reservations/<%= res._id %>?_method=DELETE" method="post">
+                                        <button type="submit" class="btn-delete-res" onclick="return confirm('Annuler cette réservation ?')">Annuler</button>
+                                    </form>
+                                </td>
                         </tr>
                         <% }) %>
                         <% } else { %>
