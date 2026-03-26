@@ -13,6 +13,7 @@ app.set('views', path.join(__dirname, 'views'));
 const catwayRoute = require('./routes/catway');
 const reservationRoute = require('./routes/reservation');
 const userRoute = require('./routes/userRoutes');
+const authRoute = require('./routes/auth');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -27,6 +28,7 @@ mongoose.connect(process.env.MONGODB_URI)
 app.use('/api/catways', catwayRoute);
 app.use('/api/catways', reservationRoute);
 app.use('/users', userRoute);
+app.use('/', authRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Serveur lancé sur le port ${PORT}`));
