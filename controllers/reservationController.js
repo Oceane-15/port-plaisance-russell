@@ -45,3 +45,20 @@ exports.getById = async (req, res) => {
         res.status(500).send(error.message);
     }
 };
+
+exports.update = async (req, res) => {
+    try {
+        const {id_reservation, id} = req.params;
+        const {clientName, checkIn, checkOut} = req.body;
+
+        await Reservation.findByIdAndUpdate(id_reservation, {
+            clientName,
+            checkIn,
+            checkOut
+        });
+
+        res.redirect(`/api/catways/${id}`);
+    } catch (error) {
+        res.status(500).send("Erreur lors de la modification");
+    }
+};
