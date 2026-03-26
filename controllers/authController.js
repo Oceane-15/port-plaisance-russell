@@ -7,12 +7,12 @@ exports.login = async (req, res) =>{
 
     try{
         const user = await User.findOne({email});
-        if(user){
+        if(!user){
             return res.status(401).send('Identifiants invalides');
         }
 
         const correct = await bcrypt.compare(password, user.password);
-        if(correct){
+        if(!correct){
             return res.status(401).send('Identifiants invalides');
         }
 
