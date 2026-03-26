@@ -4,14 +4,17 @@ const jwt = require('jsonwebtoken');
 
 exports.login = async (req, res) =>{
     const{email, password} = req.body;
+    console.log("Données reçues du formulaire :", { email, password });
 
     try{
         const user = await User.findOne({email});
+        console.log("Utilisateur trouvé en base :", user ? "OUI" : "NON");
         if(!user){
             return res.status(401).send('Identifiants invalides');
         }
 
         const correct = await bcrypt.compare(password, user.password);
+        console.log("Mot de passe valide ?", correct);
         if(!correct){
             return res.status(401).send('Identifiants invalides');
         }
