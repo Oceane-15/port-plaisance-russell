@@ -1,3 +1,4 @@
+const verifyToken = require('./middleware/verifyToken');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
@@ -25,9 +26,9 @@ mongoose.connect(process.env.MONGODB_URI)
 .then(() => console.log('Connexion à MongoDB réussie'))
 .catch((err) => console.error('Erreur de connexion :', err));
 
-app.use('/api/catways', catwayRoute);
-app.use('/api/catways', reservationRoute);
-app.use('/users', userRoute);
+app.use('/api/catways',verifyToken, catwayRoute);
+app.use('/api/catways',verifyToken, reservationRoute);
+app.use('/users',verifyToken, userRoute);
 app.use('/', authRoute);
 
 const PORT = process.env.PORT || 3000;
