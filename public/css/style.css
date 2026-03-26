@@ -241,4 +241,26 @@ a:hover{
     cursor: pointer;
 }
 
+.input-table {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
 
+.save {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.btn-save, 
+.btn-delete-res {
+    height: 35px;
+    box-sizing: border-box;
+    margin: 2px 0;
+    width: 120px;
+    display: inline-block;
+    text-align: center;
+}

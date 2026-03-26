@@ -35,18 +35,18 @@
                         <tr>
                           <form action="/api/catways/<%= catway._id %>/reservations/<%= res._id %>?_method=PUT" method="POST">
                                 <td>
-                                    <input type="text" name="boatName" value="<%= res.boatName %>" required> 
+                                    <input class="input-table" type="text" name="boatName" value="<%= res.boatName %>" required> 
                                 </td>
                                 <td>
-                                    <input type="text" name="clientName" value="<%= res.clientName %>" required> 
+                                    <input class="input-table" type="text" name="clientName" value="<%= res.clientName %>" required> 
                                 </td>
                                 <td>
-                                    <input type="date" name="startDate" value="<%= new Date(res.startDate).toISOString().split('T')[0] %>" required> 
+                                    <input class="input-table" type="date" name="startDate" value="<%= new Date(res.startDate).toISOString().split('T')[0] %>" required> 
                                 </td>
                                 <td>
-                                    <input type="date" name="endDate" value="<%= new Date(res.endDate).toISOString().split('T')[0] %>" required>
+                                    <input class="input-table" type="date" name="endDate" value="<%= new Date(res.endDate).toISOString().split('T')[0] %>" required>
                                 </td>
-                                <td>
+                                <td class="save">
                                     <button type="submit" class="btn-add">Sauvegarder</button>
                             </form>
 
