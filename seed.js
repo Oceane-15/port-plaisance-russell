@@ -13,6 +13,13 @@ async function seedDatabase() {
         await Catway.insertMany(data);
         console.log("Succès : les 24 catways ont été bien importés.");
         process.exit();
+        if (fs.existsSync('./reservations.json')) {
+            const resData = JSON.parse(fs.readFileSync('./reservations.json', 'utf-8'));
+            await Reservation.deleteMany({}); 
+            await Reservation.insertMany(resData);
+            console.log("Succès : les réservations ont été importées.");
+        }
+        process.exit();
     } catch (error){
         console.error("Erreur d'import :", error);
         process.exit(1);
