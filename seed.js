@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Catway = require('./models/Catway');
+const Reservation = require('./models/Reservation');
 const fs = require('fs');
 require('dotenv').config();
 
