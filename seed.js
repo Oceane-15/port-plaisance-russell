@@ -12,7 +12,6 @@ async function seedDatabase() {
         console.log("Anciennes données supprimées.");
         await Catway.insertMany(data);
         console.log("Succès : les 24 catways ont été bien importés.");
-        process.exit();
         if (fs.existsSync('./reservations.json')) {
             const resData = JSON.parse(fs.readFileSync('./reservations.json', 'utf-8'));
             await Reservation.deleteMany({}); 
